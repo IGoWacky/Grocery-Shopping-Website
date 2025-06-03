@@ -13,7 +13,9 @@ const Navbar = () => {
     }
 
     useEffect(() => {
-
+        if (searchQuery.length > 0) {
+            navigate('/products')
+        }
     }, [searchQuery])
 
     return (
@@ -30,7 +32,7 @@ const Navbar = () => {
                 <NavLink to='/'>Contact</NavLink>
 
                 <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
-                    <input className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
+                    <input onChange={(e) => setSearchQuery(e.target.value)} className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
                     <img src={assets.search_icon} alt='search' className='w-4 h-4'/>
                 </div>
 
@@ -55,7 +57,7 @@ const Navbar = () => {
             </div>
 
             <button onClick={() => open ? setOpen(false) : setOpen(true)} aria-label="Menu" className="sm:hidden">
-                {/* Menu Icon SVG */}
+                {/* Menu Icon IMG */}
                 <img src={assets.menu_icon} alt='menu'/>
             </button>
 
